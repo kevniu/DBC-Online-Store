@@ -1,0 +1,22 @@
+.jumbotron.center-block
+  = form_for @product do |f|
+    - if @product.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+        %ul
+          - @product.errors.full_messages.each do |msg|
+            %li= msg
+
+    %fieldset.form-group
+      =f.label :name
+      %div=f.text_field :name
+    %fieldset.form-group
+      =f.label :description
+      %div=f.text_field :description
+    %fieldset.form-group
+      =f.label :price
+      %div=f.text_field :price
+    %fieldset.form-group
+      =f.label :quantity
+      %div=f.text_field :quantity
+      = f.submit 'Save', {class: 'btn btn-primary'}

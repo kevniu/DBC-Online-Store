@@ -1,0 +1,31 @@
+%div.col-xs-3
+  .list-group.col-sm-12.col-sm-12.col-sm-12
+    -@categories.each do |category|
+      =link_to category.name, "/categories/#{category.id}", {class: 'list-group-item'}
+%div#append_cart.col-xs-9
+%div.col-xs-9.pull-right
+  - @products.each do |product|
+    .col-sm-4.col-lg-4.col-md-4
+      .thumbnail
+        %img{src: "http://plan59.com/images/JPGs/sunshine_1954_fresh_00.jpg"}
+          .caption
+            %h5.pull-right
+              =number_to_currency(product.price)
+            %h5
+              =link_to truncate(product.name, length: 24), product
+            %h5
+              ="Stock: "
+              =product.quantity
+            - if current_user
+              %div.add_cart
+                = form_for(@cart) do |f|
+                  .field
+                    = f.hidden_field :item_id, value: product.id
+                  %fieldset.form-group
+                    = f.label :quantity
+                    = number_field :name, "quantity"
+                  - if product.quantity >= 1
+                    = f.submit "Add To Cart", {class: "btn btn-success btn-sm"}
+                  - else
+                    = f.submit "Add To Cart", {class: "btn btn-success btn-sm disabled"}
+

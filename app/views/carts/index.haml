@@ -1,0 +1,34 @@
+%h4 Order History
+%table.table
+  %thead.thead-inverse
+    %tr
+      %th Order Date
+      %th Product
+      %th Quantity
+      %th Price
+
+  %tbody
+    - @carts.each do |cart|
+      %tr
+        %td{colspan:'4'}= cart.updated_at
+      - @quantities = Hash.new(0)
+      - cart.products.each do |p|
+        - @quantities[p.name] += 1
+      -cart.products.uniq.each do |product|
+        %tr
+          %td
+          %td= product.name
+          %td= @quantities[product.name]
+          %td= number_to_currency(product.price)
+      %tr
+        %td
+        %td
+        %td
+        %td
+          = 'Order Total: '
+          = number_to_currency(cart.total_price)
+      %tr
+        %td
+        %td
+        %td
+        %td

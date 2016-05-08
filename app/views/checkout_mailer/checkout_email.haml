@@ -1,0 +1,26 @@
+%h1
+  Thank you for shopping at Krispy Shoppe, #{@user.name}
+%p
+  Below is a list of your purchases today
+  %br
+%table.table
+  %thead.thead-inverse
+    %tr
+      %th Product
+      %th Price
+      %th Quantity
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= number_to_currency(product.price)
+        %td= @quantities[product.name]
+%br
+%p
+  Your Order Total:
+  = @total_price
+  %br
+%p Thanks for your purchase and have a great day!
+
+

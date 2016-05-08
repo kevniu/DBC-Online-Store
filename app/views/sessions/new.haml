@@ -1,0 +1,10 @@
+.jumbotron.center-block
+  = form_for(:session, url: '/sessions', action: 'create') do |f|
+
+    %fieldset.form-group
+      =f.label :email
+      %div=f.text_field :email, {type: 'email'}
+    %fieldset.form-group
+      =f.label :password
+      %div=f.text_field :password, {type: 'password'}
+      = f.submit 'Log In', {class: 'btn btn-primary'}

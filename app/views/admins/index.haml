@@ -1,0 +1,25 @@
+=link_to 'New Product', new_product_path, {class: "btn btn-primary", id: "new-item-btn"}
+
+%table.table
+  %thead.thead-inverse
+    %tr
+      %th Product
+      %th Price
+      %th Quantity
+      %th
+      %th
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= number_to_currency(product.price)
+        %td= product.quantity
+        %td= link_to 'Show', product
+        %td= link_to 'Edit', edit_product_path(product)
+        %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+

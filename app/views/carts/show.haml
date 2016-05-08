@@ -1,0 +1,25 @@
+%h4 Shopping Cart
+%table.table
+  %thead.thead-inverse
+    %tr
+      %th Product
+      %th Price
+      %th Quantity
+      %th
+      %th
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= number_to_currency(product.price)
+        %td= @quantities[product.name]
+        %td= link_to 'Remove', cart_path(product.id), :method => :delete
+
+%div
+  = 'Total Price: '
+  = @total_price
+
+%div
+  = link_to 'Checkout', checkout_url, {class: 'btn btn-success'}

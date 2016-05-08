@@ -1,0 +1,9 @@
+- @category.products.each do |product|
+  .col-sm-4.col-lg-4.col-md-4
+    .thumbnail
+      %img{src: "http://plan59.com/images/JPGs/sunshine_1954_fresh_00.jpg"}
+        .caption
+          %h4.pull-right
+            =number_to_currency(product.price)
+          %h4
+            =link_to truncate(product.name, length: 24), product

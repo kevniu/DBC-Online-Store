@@ -1,0 +1,19 @@
+.jumbotron.center-block
+  = form_for @user do |f|
+    - if @user.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+
+    %fieldset.form-group
+      =f.label :name
+      %div=f.text_field :name
+    %fieldset.form-group
+      =f.label :email
+      %div=f.text_field :email, {type: 'email'}
+    %fieldset.form-group
+      =f.label :password
+      %div=f.text_field :password, {type: 'password'}
+      = f.submit 'Save', {class: 'btn btn-primary'}
