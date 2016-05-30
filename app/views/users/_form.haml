@@ -1,4 +1,4 @@
-.jumbotron.center-block
+.jumbotron.center-block.container
   = form_for @user do |f|
     - if @user.errors.any?
       #error_explanation
@@ -7,13 +7,13 @@
           - @user.errors.full_messages.each do |msg|
             %li= msg
 
-    %fieldset.form-group
+    %fieldset.form-group.col-md-offset-5
       =f.label :name
       %div=f.text_field :name
-    %fieldset.form-group
+    %fieldset.form-group.col-md-offset-5
       =f.label :email
       %div=f.text_field :email, {type: 'email'}
-    %fieldset.form-group
+    %fieldset.form-group.col-md-offset-5
       =f.label :password
       %div=f.text_field :password, {type: 'password'}
       = f.submit 'Save', {class: 'btn btn-primary'}

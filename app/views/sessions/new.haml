@@ -1,10 +1,10 @@
-.jumbotron.center-block
+.jumbotron.center-block.container
   = form_for(:session, url: '/sessions', action: 'create') do |f|
 
-    %fieldset.form-group
+    %fieldset.form-group.col-md-offset-5
       =f.label :email
       %div=f.text_field :email, {type: 'email'}
-    %fieldset.form-group
+    %fieldset.form-group.col-md-offset-5
       =f.label :password
       %div=f.text_field :password, {type: 'password'}
       = f.submit 'Log In', {class: 'btn btn-primary'}
