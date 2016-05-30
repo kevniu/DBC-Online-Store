@@ -1,11 +1,10 @@
-%h4 Shopping Cart
-%table.table
+%h4.container Shopping Cart
+%table.table.container
   %thead.thead-inverse
     %tr
       %th Product
       %th Price
       %th Quantity
-      %th
       %th
       %th
 
@@ -23,7 +22,6 @@
 
 %div
   = 'Total Price: '
-  = total_price
+  = number_to_currency(total_price)
 
 %br
-

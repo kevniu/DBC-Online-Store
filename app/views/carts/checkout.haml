@@ -1,19 +1,20 @@
-%h2 Thank you for shopping at Krispy Shoppe
-%h4 Below is a list of your purchases today
-%table.table
-  %thead.thead-inverse
-    %tr
-      %th Product
-      %th Price
-      %th Quantity
-
-  %tbody
-    - @products.each do |product|
+%h2.container Thank you for shopping at Krispy Shoppe
+%h4.container Below is a list of your purchases today
+%div.container
+  %table.table
+    %thead.thead-inverse
       %tr
-        %td= product.name
-        %td= number_to_currency(product.price)
-        %td= @quantities[product.name]
+        %th Product
+        %th Price
+        %th Quantity
 
-%div
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= product.name
+          %td= number_to_currency(product.price)
+          %td= @quantities[product.name]
+
+%div.container
   = 'Your Order Total: '
-  = @total_price
+  = number_to_currency(@total_price)
